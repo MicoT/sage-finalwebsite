@@ -53,7 +53,7 @@ const Dashboard = () => {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/student-instructor")
+      .get("https://sageapifinal.onrender.com/api/student-instructor")
       .then((response) => {
         const fetchedData = response.data;
         processLineGraphData(fetchedData);
