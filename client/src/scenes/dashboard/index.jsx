@@ -318,10 +318,10 @@ const Dashboard = () => {
       displayEmpty
       inputProps={{ "aria-label": "Without label" }}
     >
-      <MenuItem value="1st Year">1st Year</MenuItem>
-      <MenuItem value="2nd Year">2nd Year</MenuItem>
-      <MenuItem value="3rd Year">3rd Year</MenuItem>
-      <MenuItem value="4th Year">4th Year</MenuItem>
+      <MenuItem value="1st Year">1st Year 2022-2023</MenuItem>
+      <MenuItem value="2nd Year">2nd Year 2022-2023</MenuItem>
+      <MenuItem value="3rd Year">3rd Year 2022-2023</MenuItem>
+      <MenuItem value="4th Year">4th Year 2022-2023</MenuItem>
     </Select>
   );
   return (
@@ -459,10 +459,10 @@ const Dashboard = () => {
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
           >
-            <MenuItem value="1st Year">1st Year</MenuItem>
-            <MenuItem value="2nd Year">2nd Year</MenuItem>
-            <MenuItem value="3rd Year">3rd Year</MenuItem>
-            <MenuItem value="4th Year">4th Year</MenuItem>
+            <MenuItem value="1st Year">1st Year 2022-2023</MenuItem>
+            <MenuItem value="2nd Year">2nd Year 2022-2023</MenuItem>
+            <MenuItem value="3rd Year">3rd Year 2022-2023</MenuItem>
+            <MenuItem value="4th Year">4th Year 2022-2023</MenuItem>
           </Select>
         </Box>
       </Box>
