@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -13,35 +12,17 @@ import {
   useTheme,
 } from "@mui/material";
 import {
-  SettingsOutlined,
-  SettingOutLined,
   ChevronLeft,
   Person,
-  HomeOutline,
-  Groups2Outlined,
-  ReceiptLongOutlined,
-  PointOfSaleOutlined,
-  TodayOutlined,
-  CalendarMonth,
-  AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
-  PieChartOutlined,
-  AssessmentOutlined,
-  PeopleAltOutlined,
   MenuBookOutlined,
   ArticleOutlined,
-  AssignmentOutlined,
-  AnalyticsOutlined,
   GradingOutlined,
-  GradeOutlined,
   Home,
   ChevronRightOutlined,
 } from "@mui/icons-material";
-import SpeakerNotesOffIcon from '@mui/icons-material/SpeakerNotesOff';
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
-import profileImage from "assets/profile.png";
 import brand from "assets/sage.png";
 
 const navItems = [
@@ -56,10 +37,15 @@ const navItems = [
     path: "student/activities"
   },
   {
-    text: "Overview",
+    text: "Student Usage Activity",
     icon: <ArticleOutlined />,
     path: "overview"
   },
+    // {
+  //   text: "Course Contents",
+  //   icon: <AssessmentOutlined />,
+  //   path: "course content"
+  // },
   {
     text: "Assessment Tracking",
     icon: null,
@@ -69,18 +55,18 @@ const navItems = [
     icon: <GradingOutlined />,
     path: "grades"
   },
-  {
-    text: "Rates",
-    icon: <GradingOutlined />,
-    path: "rates"
-  },
+  // {
+  //   text: "Rates",
+  //   icon: <GradingOutlined />,
+  //   path: "rates"
+  // },
   {
     text: "Monitoring Tools",
     icon: null,
     path: "monitoring"
   },
   {
-    text: "Module Grades",
+    text: "Instructor Content",
     icon: <MenuBookOutlined />,
     path: "module-grades"
   },
@@ -95,7 +81,7 @@ const navItems = [
   //   path: "no-instructor/courses"
   // },
   {
-    text: "Instructor Ussage",
+    text: "Instructor Usage",
     icon: <Person />,
     path: "instructor-ussage"
   },

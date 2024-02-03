@@ -13,6 +13,7 @@ router.post('/register', [
   body('username').not().isEmpty().trim().escape(),
   body('email').isEmail().normalizeEmail(),
   body('password').isLength({ min: 5 }),
+  body('role').not().isEmpty().isIn(['CCIS-admin', 'CEA-admin', 'CHS-admin', 'ATYCB-admin', 'CAS-admin', 'super-admin']), // Updated validation for role
 ], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -20,14 +21,14 @@ router.post('/register', [
   }
 
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     let user = await User.findOne({ email });
 
     if (user) {
       return res.status(400).json({ msg: 'User already exists' });
     }
 
-    user = new User({ username, email, password });
+    user = new User({ username, email, password, role });
     await user.save();
     const token = jwt.sign({ id: user._id }, 'secret_key', { expiresIn: '1h' });
     res.status(201).json({ token });

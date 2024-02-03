@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Table,
   TableBody,
@@ -13,7 +13,8 @@ import {
   Button,
   TablePagination,
   CircularProgress,
-} from '@mui/material';
+  Typography,
+} from "@mui/material";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,8 +24,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 // Registering the chart components
 ChartJS.register(
@@ -39,7 +40,7 @@ ChartJS.register(
 
 const StudentActivityTable = () => {
   const [activities, setActivities] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [expandedRows, setExpandedRows] = useState({});
@@ -49,10 +50,12 @@ const StudentActivityTable = () => {
     const fetchActivities = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5000/api/student-activities');
+        const response = await axios.get(
+          "http://localhost:5000/api/student-activities"
+        );
         setActivities(response.data);
       } catch (error) {
-        console.error('Error fetching student activities', error);
+        console.error("Error fetching student activities", error);
       } finally {
         setIsLoading(false);
       }
@@ -100,42 +103,52 @@ const StudentActivityTable = () => {
   };
 
   const getChartData = (personId) => {
-    const studentDetails = groupedActivities[
-      activities.find((activity) => activity.PERSON_ID === personId).LAST_NAME +
-        activities.find((activity) => activity.PERSON_ID === personId).FIRST_NAME
-    ];
-  
+    const studentDetails =
+      groupedActivities[
+        activities.find((activity) => activity.PERSON_ID === personId)
+          .LAST_NAME +
+          activities.find((activity) => activity.PERSON_ID === personId)
+            .FIRST_NAME
+      ];
+
     if (!studentDetails) {
       return {
         labels: [],
         datasets: [],
       };
     }
-  
+
     // Sorting student details by month (Ensure the month is treated as an integer for sorting)
     const sortedDetails = studentDetails.sort(
       (a, b) => parseInt(a.MONTH) - parseInt(b.MONTH)
     );
-  
+
     const chartData = {
       labels: sortedDetails.map((detail) => `Month: ${detail.MONTH}`),
       datasets: [
         {
-          label: 'Duration in Minutes',
+          label: "Duration in Minutes",
           data: sortedDetails.map((detail) => detail.DURATION_MINUTES),
           fill: false,
-          backgroundColor: 'rgb(75, 192, 192)',
-          borderColor: 'rgba(75, 192, 192, 0.2)',
+          backgroundColor: "rgb(75, 192, 192)",
+          borderColor: "rgba(75, 192, 192, 0.2)",
         },
       ],
     };
-  
+
     return chartData;
   };
-  
 
   return (
     <Box sx={{ padding: 3 }}>
+      <Typography variant="h4" mb="10px">
+        Students Usage Activity
+      </Typography>
+      <Typography variant="h6" mb="20px">
+        This features presents the time CCIS students spent on using Blackboard
+        during the school year 2022-2023. You can view each individual student's
+        session times per month with a line graph visualization.
+      </Typography>
       <TextField
         fullWidth
         label="Search by Last Name or First Name"
@@ -146,10 +159,10 @@ const StudentActivityTable = () => {
       {isLoading ? (
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '300px',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "300px",
           }}
         >
           <CircularProgress />
@@ -176,19 +189,26 @@ const StudentActivityTable = () => {
                         <TableCell>
                           <Button
                             variant="contained"
-                            onClick={() => handleExpandClick(activity.PERSON_ID)}
+                            onClick={() =>
+                              handleExpandClick(activity.PERSON_ID)
+                            }
                           >
-                            {expandedRows[activity.PERSON_ID] ? 'Hide' : 'Show'} Details
+                            {expandedRows[activity.PERSON_ID] ? "Hide" : "Show"}{" "}
+                            Details
                           </Button>
                         </TableCell>
                       </TableRow>
                       {expandedRows[activity.PERSON_ID] && (
                         <>
-                          {groupedActivities[activity.LAST_NAME + activity.FIRST_NAME].map((detail) => (
+                          {groupedActivities[
+                            activity.LAST_NAME + activity.FIRST_NAME
+                          ].map((detail) => (
                             <TableRow key={detail.PERSON_ID + detail.MONTH}>
                               <TableCell />
                               <TableCell>Month: {detail.MONTH}</TableCell>
-                              <TableCell>Duration: {detail.DURATION_MINUTES}</TableCell>
+                              <TableCell>
+                                Duration: {detail.DURATION_MINUTES}
+                              </TableCell>
                             </TableRow>
                           ))}
                           <TableRow>
