@@ -37,7 +37,7 @@ const ContentTable = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:5000/api/content");
+        const response = await axios.get("https://sageapifinal.onrender.com/api/content");
         const groupedContent = groupContentByCourse(response.data);
         setContents(groupedContent);
         setFilteredContents(groupedContent);

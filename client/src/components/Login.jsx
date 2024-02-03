@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://sageapifinal.onrender.com/api/auth/login",
         loginInputs
       );
       localStorage.setItem("token", response.data.token);
@@ -51,7 +51,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://sageapifinal.onrender.com/api/auth/register",
         registerInputs
       );
       localStorage.setItem("token", response.data.token);

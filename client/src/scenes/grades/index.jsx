@@ -31,7 +31,7 @@ const CourseDataPage = () => {
     const fetchCourseData = async () => {
       setLoading(true); // Start loading
       try {
-        const response = await axios.get("http://localhost:5000/api/coursedata");
+        const response = await axios.get("https://sageapifinal.onrender.com/api/coursedata");
         setCourseData(response.data);
         setFilteredData(response.data); // Initialize filtered data with all course data
         setLoading(false); // Data fetched, stop loading
@@ -67,7 +67,7 @@ const CourseDataPage = () => {
     setSelectedCourseCode(courseCode); // Set the selected course code
     setLoadingStudent(true); // Start loading
     try {
-      const response = await axios.get(`http://localhost:5000/api/grade-final/byCourseCode/${courseCode}`);
+      const response = await axios.get(`https://sageapifinal.onrender.com/api/grade-final/byCourseCode/${courseCode}`);
       setStudentData(response.data); // Set the student data for the selected course
       setLoadingStudent(false); // Data fetched, stop loading
     } catch (error) {

@@ -103,7 +103,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/grade-final")
+      .get("https://sageapifinal.onrender.com/api/grade-final")
       .then((response) => {
         const fetchedData = response.data;
         processGradesData(fetchedData);

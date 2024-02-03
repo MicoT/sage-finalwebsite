@@ -33,7 +33,7 @@ const InstructorActivityTable = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          "http://localhost:5000/api/instructor-activities"
+          "https://sageapifinal.onrender.com/api/instructor-activities"
         );
         setActivities(response.data);
       } catch (error) {

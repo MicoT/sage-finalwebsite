@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', inputs);
+      const response = await axios.post('https://sageapifinal.onrender.com/api/auth/register', inputs);
       console.log(response.data);
     } catch (error) {
       console.error(error.response.data);

@@ -51,7 +51,7 @@ const StudentActivityTable = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          "http://localhost:5000/api/student-activities"
+          "https://sageapifinal.onrender.com/api/student-activities"
         );
         setActivities(response.data);
       } catch (error) {
